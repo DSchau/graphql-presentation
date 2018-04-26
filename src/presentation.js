@@ -2,17 +2,7 @@
 import React from 'react';
 
 // Import Spectacle Core tags
-import {
-  BlockQuote,
-  Cite,
-  Deck,
-  Heading,
-  ListItem,
-  List,
-  Quote,
-  Slide,
-  Text,
-} from 'spectacle';
+import { Deck } from 'spectacle';
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
@@ -26,14 +16,14 @@ const theme = createTheme(
     primary: '#0A1C28',
     secondary: '#3FB4C6',
     tertiary: '#F35B05',
-    quartenary: '#F1E4DB',
+    quartenary: '#F1E4DB'
   },
   {
     primary: {
       googleFont: true,
       name: 'Bitter'
     },
-    secondary: 'Helvetica',
+    secondary: 'Helvetica'
   }
 );
 

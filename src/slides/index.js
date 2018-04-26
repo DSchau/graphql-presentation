@@ -9,11 +9,7 @@ import * as WhatIsIt from './what-is-it';
 import * as Conclusion from './conclusion';
 
 export default function makeSlides() {
-  return [
-    Intro,
-    WhatIsIt,
-    Conclusion
-  ].map((Slides, rootIndex) => {
+  return [Intro, WhatIsIt, Conclusion].map((Slides, rootIndex) => {
     return (
       <SlideSet key={rootIndex}>
         {Object.keys(Slides).map((key, index) => {
@@ -40,7 +36,7 @@ export default function makeSlides() {
                   }}
                 />
               </Notes>
-              {typeof Content === 'function' && <Content />}
+              {typeof Content === 'function' ? <Content /> : Content}
             </Slide>
           );
         })}

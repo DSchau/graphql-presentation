@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Fill, Image, Layout, Link } from 'spectacle';
+import { Heading, Fill, Image, Layout, Link, S as Span } from 'spectacle';
 import styled from 'react-emotion';
 import TwitterIcon from 'react-icons/lib/fa/twitter';
 import GithubIcon from 'react-icons/lib/fa/github';
@@ -25,7 +25,7 @@ const GraphqlLogo = styled(Image)`
   animation: ${SPIN} 20s linear infinite;
 `;
 
-export const Intro = () =>
+export const Intro = () => (
   <div
     style={{
       display: 'flex',
@@ -82,7 +82,8 @@ export const Intro = () =>
         https://graphql.dustinschau.com
       </Link>
     </div>
-  </div>;
+  </div>
+);
 
 Intro.Props = {
   bgImage: images.intro,
@@ -153,16 +154,31 @@ AboutMe.Props = {
 };
 
 export const RestKiller = () => (
-  <Heading size={2} caps fit>Is it a REST killer?</Heading>
+  <Heading size={2} caps fit>
+    Is it a REST killer?
+  </Heading>
 );
 
 export const No = () => (
   <React.Fragment>
-    <Heading size={1} caps fit textColor="primary">No</Heading>
+    <Heading size={1} caps fit textColor="primary">
+      No
+    </Heading>
     <Heading size={6}>&hellip; and chill</Heading>
   </React.Fragment>
 );
 
 No.Props = {
   bgColor: 'secondary'
+};
+
+export const ButMaybe = () => (
+  <Heading size={2} caps fit>
+    But <Span type="italic">maybe</Span>
+  </Heading>
+);
+
+ButMaybe.Props = {
+  bgImage: 'https://media.giphy.com/media/DfdbTJZx6Yjra/giphy.gif',
+  bgDarken: '0.5'
 };

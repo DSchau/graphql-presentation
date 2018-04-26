@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading } from 'spectacle';
+import { Heading, Fill, Layout } from 'spectacle';
 import styled from 'react-emotion';
 import { css } from 'emotion';
 
@@ -14,17 +14,30 @@ const LibrariesContainer = styled('div')`
     margin: 2rem 0 !important;
   }
 
-  ${new Array(12).fill(undefined).map((_, index) => css`
-    > *:nth-child(${index + 1}) {
-      animation-delay: ${(index + 1) * 500}ms;
-    }
-  `)}
+  ${new Array(12).fill(undefined).map(
+    (_, index) => css`
+      > *:nth-child(${index + 1}) {
+        animation-delay: ${(index + 1) * 500}ms;
+      }`
+  )};
 `;
 export const WhatIsIt = () => (
-  <Heading size={2} caps textColor="primary">What it is</Heading>
+  <Heading size={2} caps textColor="primary">
+    What it is
+  </Heading>
 );
 
 WhatIsIt.Props = {
+  bgColor: 'secondary'
+};
+
+export const LanguageAgnostic = () => (
+  <Heading size={2} caps fit textColor="primary">
+    Language agnostic
+  </Heading>
+);
+
+LanguageAgnostic.Props = {
   bgColor: 'secondary'
 };
 
@@ -32,16 +45,27 @@ export const ServerLibraries = class extends React.Component {
   render() {
     return (
       <LibrariesContainer>
-        {
-          ['.NET', 'Clojure', 'Elixir', 'Erlang', 'Go', 'Groovy', 'Java', 'Node', 'PHP', 'Python', 'Ruby', 'Scala']
-            .sort()
-            .map((lang, index) => (
-              <Heading size={4} key={lang} textColor="secondary">
-                {lang}
-              </Heading>
-            ))
-        }
+        {[
+          '.NET',
+          'Clojure',
+          'Elixir',
+          'Erlang',
+          'Go',
+          'Groovy',
+          'Java',
+          'Node',
+          'PHP',
+          'Python',
+          'Ruby',
+          'Scala'
+        ]
+          .sort()
+          .map((lang, index) => (
+            <Heading size={4} key={lang} textColor="secondary">
+              {lang}
+            </Heading>
+          ))}
       </LibrariesContainer>
     );
   }
-}
+};
