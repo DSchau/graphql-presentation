@@ -5,12 +5,11 @@
   "private": true,
   "dependencies": {
     "@dschau/spectacle-code-slide": "~0.5.2",
-    "emotion": "~9.1.1",
     "lodash.kebabcase": "~4.1.1",
     "marked": "~0.3.19",
+    "prismjs": "1.6.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-emotion": "~9.1.1",
     "react-icons": "~2.2.7",
     "spectacle-scripts": "2.0.0"
   },

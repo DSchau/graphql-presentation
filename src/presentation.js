@@ -8,6 +8,8 @@ import { Deck } from 'spectacle';
 import createTheme from 'spectacle/lib/themes/default';
 import makeSlides from './slides';
 
+import { Example } from './slides/example';
+
 // Require CSS
 require('normalize.css');
 

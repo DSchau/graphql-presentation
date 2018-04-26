@@ -3,6 +3,7 @@ import { Heading, Fill, Layout } from 'spectacle';
 import styled from 'react-emotion';
 import { css } from 'emotion';
 
+import { GraphqlPlayground } from '../../components';
 import { APPEAR } from '../../style';
 
 const LibrariesContainer = styled('div')`
@@ -30,6 +31,14 @@ export const WhatIsIt = () => (
 WhatIsIt.Props = {
   bgColor: 'secondary'
 };
+
+export const Example = () => (
+  <GraphqlPlayground
+    query={require('./code/query').default}
+    data={require('./code/result').default}
+    variables={require('./code/variables').default}
+  />
+);
 
 export const LanguageAgnostic = () => (
   <Heading size={2} caps fit textColor="primary">

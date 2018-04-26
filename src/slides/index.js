@@ -1,15 +1,16 @@
 import React from 'react';
-import { Notes, SlideSet, Slide } from 'spectacle';
+import { Notes, Magic, SlideSet, Slide } from 'spectacle';
 import CodeSlide from '@dschau/spectacle-code-slide';
 import marked from 'marked';
 import dasherize from 'lodash.kebabcase';
 
 import * as Intro from './intro';
 import * as WhatIsIt from './what-is-it';
+import * as Demo from './demo';
 import * as Conclusion from './conclusion';
 
 export default function makeSlides() {
-  return [Intro, WhatIsIt, Conclusion].map((Slides, rootIndex) => {
+  return [Intro, WhatIsIt, Demo, Conclusion].map((Slides, rootIndex) => {
     return (
       <SlideSet key={rootIndex}>
         {Object.keys(Slides).map((key, index) => {

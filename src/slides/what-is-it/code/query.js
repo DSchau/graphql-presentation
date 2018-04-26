@@ -1,6 +1,6 @@
 export default `
-{
-  project(name: "GraphQL") {
+query GetProjectByName($name: String!) {
+  project(name: $name) {
     tagline
   }
 }
