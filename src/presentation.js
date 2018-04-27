@@ -18,7 +18,8 @@ const theme = createTheme(
   {
     primary: {
       googleFont: true,
-      name: 'Bitter'
+      name: 'Bitter',
+      styles: ['400', '700']
     },
     secondary: 'Helvetica'
   }

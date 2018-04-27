@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading } from 'spectacle';
+import { CodePane, Heading } from 'spectacle';
 
 import { GraphqlLogo } from '../../components';
 
@@ -51,4 +51,18 @@ export const BusinessLogic = () => (
   <Heading size={2} caps fit>
     Keep your business logic intact
   </Heading>
+);
+
+export const RESTExamplesSnippets = () => (
+  <div>
+    {['/user', '/user/:id', '/graphql'].map(endpoint => (
+      <CodePane
+        lang="markup"
+        source={endpoint}
+        key={endpoint}
+        textSize={48}
+        style={{ margin: '2rem 0' }}
+      />
+    ))}
+  </div>
 );
