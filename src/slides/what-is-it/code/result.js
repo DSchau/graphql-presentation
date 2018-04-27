@@ -1,11 +1,9 @@
-export default JSON.stringify(
-  {
-    data: {
-      project: {
-        tagline: 'A query language for APIs'
-      }
+export default {
+  data: {
+    user: {
+      age: 122,
+      name: 'Jeanne Calment',
+      title: 'Alive and Kicking'
     }
-  },
-  null,
-  2
-);
+  }
+};

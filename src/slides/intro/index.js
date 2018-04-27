@@ -7,9 +7,7 @@ import WebsiteIcon from 'react-icons/lib/md/web';
 
 import preloader from 'spectacle/lib/utils/preloader';
 
-import graphqlLogo from './assets/logo.svg';
-
-import { SPIN } from '../../style';
+import { GraphqlLogo } from '../../components';
 
 const images = {
   intro: require('./assets/cover-optimized.jpeg'),
@@ -17,15 +15,6 @@ const images = {
 };
 
 preloader(images);
-
-const GraphqlLogo = styled(Image)`
-  display: block;
-  max-width: 50% !important;
-  max-height: 50% !important;
-  margin: 2rem auto;
-
-  animation: ${SPIN} 20s linear infinite;
-`;
 
 export const Intro = () => (
   <div>
@@ -50,7 +39,7 @@ export const Intro = () => (
     >
       by <Span type="bold">Dustin Schau</Span>
     </Heading>
-    <GraphqlLogo src={graphqlLogo} />
+    <GraphqlLogo />
     <div
       style={{
         position: 'absolute',

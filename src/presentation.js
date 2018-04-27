@@ -1,10 +1,7 @@
-// Import React
-import React from 'react';
+import React, { Component } from 'react';
 
-// Import Spectacle Core tags
 import { Deck } from 'spectacle';
 
-// Import theme
 import createTheme from 'spectacle/lib/themes/default';
 import makeSlides from './slides';
 
@@ -27,7 +24,7 @@ const theme = createTheme(
   }
 );
 
-export default class Presentation extends React.Component {
+export default class Presentation extends Component {
   render() {
     return (
       <Deck

@@ -1,14 +1,12 @@
 import React from 'react';
 import { CodePane, Heading, Image, Fill, Layout, S as Span } from 'spectacle';
 import styled from 'react-emotion';
-import Player from 'react-player';
 import { css } from 'emotion';
 
 import { Emoji, GraphqlPlayground } from '../../components';
 import { APPEAR } from '../../style';
 
 import databaseImage from './images/database.svg';
-import timeline from './video/twitter.mp4';
 
 const LibrariesContainer = styled('div')`
   display: grid;
@@ -50,14 +48,95 @@ export const Example = () => (
   />
 );
 
+export const ExampleTwo = () => (
+  <GraphqlPlayground
+    query={require('./code/query').default}
+    data={require('./code/result').default}
+    variables={require('./code/variables').default}
+    transformer={({ query, data, ...rest }) => ({
+      query: query
+        .replace(/age\s+/, '')
+        .replace(/title\s+/, '')
+        .replace(/\s{4}\}/, '  }'),
+      data: {
+        data: {
+          user: {
+            name: data.data.user.name
+          }
+        }
+      },
+      ...rest
+    })}
+  />
+);
+
+export const RestComparison = () => (
+  <CodePane
+    lang="markup"
+    source={`/users/123456?fields=name,age,title`}
+    textSize={32}
+  />
+);
+
+export const NotThatBad = () => (
+  <Heading size={2} caps fit>
+    This is&hellip; actually not that bad
+  </Heading>
+);
+
+export const ButWait = () => null;
+
+ButWait.Props = {
+  bgImage: 'https://media.giphy.com/media/9V1F9o1pBjsxFzHzBr/giphy.gif'
+};
+
+export const StructuredData = () => (
+  <GraphqlPlayground
+    query={require('./code/query').default}
+    data={require('./code/result').default}
+    variables={require('./code/variables').default}
+    transformer={({ query, data, ...rest }) => ({
+      query: query.replace(
+        /\s{2}\}/,
+        `    manager {
+      age
+      name
+      title
+    }`
+      ),
+      data: {
+        data: {
+          user: {
+            ...data.data.user,
+            manager: {
+              name: 'Tim Tomothy',
+              title: 'The Boss Man',
+              age: 100
+            }
+          }
+        }
+      },
+      ...rest
+    })}
+  />
+);
+
+export const Hmm = () => null;
+
+Hmm.Props = {
+  bgImage: 'https://media.giphy.com/media/a5viI92PAF89q/giphy.gif'
+};
+
 export const Types = () => (
   <CodePane
     lang="graphql"
     source={`
-type Project {
+type User {
+  id: Int
   name: String
-  tagline: String
-  contributors: [User]
+  age: Int
+  title: String
+  manager: User
 }
   `.trim()}
     textSize={32}
@@ -107,29 +186,21 @@ mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
   }
 }
   `.trim()}
-    data={JSON.stringify(
-      {
-        data: {
-          createReview: {
-            stars: 5,
-            commentary: 'This is a great movie!'
-          }
-        }
-      },
-      null,
-      2
-    )}
-    variables={JSON.stringify(
-      {
-        ep: 'JEDI',
-        review: {
+    data={{
+      data: {
+        createReview: {
           stars: 5,
           commentary: 'This is a great movie!'
         }
-      },
-      null,
-      2
-    )}
+      }
+    }}
+    variables={{
+      ep: 'JEDI',
+      review: {
+        stars: 5,
+        commentary: 'This is a great movie!'
+      }
+    }}
   />
 );
 
@@ -171,111 +242,3 @@ export const ServerLibraries = class extends React.Component {
     );
   }
 };
-
-export const TwitterTimeline = () => (
-  <Player url={timeline} playing loop width="100%" height="100%" />
-);
-
-export const TweetExample = () => <Image src={require('./images/tweet.png')} />;
-
-export const RepliesExample = () => (
-  <Image src={require('./images/timeline.png')} />
-);
-
-export const MyReaction = () => (
-  <Emoji ariaLabel="What the..." fontSize={256}>
-    😶
-  </Emoji>
-);
-
-export const RESTCalls = () => (
-  <div>
-    {[
-      'https://twitter.com/api/tweets',
-      'https://twitter.com/tweets/api/1234',
-      'https://twitter.com/api/tweets/1234/conversation'
-    ].map(url => (
-      <CodePane
-        lang="markup"
-        source={url}
-        textSize={32}
-        style={{ margin: '2rem 0' }}
-      />
-    ))}
-  </div>
-);
-
-export const Waterfall = () => (
-  <Heading size={2} fit caps>
-    Waterfall
-  </Heading>
-);
-
-Waterfall.Props = {
-  bgImage: require('./images/waterfall-optimized.jpeg'),
-  bgDarken: 0.5
-};
-
-export const GraphqlExample = () => (
-  <GraphqlPlayground
-    textSize={16}
-    query={`
-query TimelineForUser($user: String!) {
-  timeline(user: $user) {
-    edges {
-      node {
-        id
-        body
-        likes
-        retweets
-        conversation(first: 20) {
-          endIndex
-          edges {
-            node {
-              id
-              body
-              likes
-              retweets
-            }
-          }
-        }
-      }
-    }
-  }
-}
-    `.trim()}
-    variables={JSON.stringify({ user: 'dschau' }, null, 2)}
-    data={JSON.stringify(
-      {
-        data: {
-          timeline: {
-            edges: [
-              {
-                node: {
-                  id: 1,
-                  body: 'something something',
-                  likes: 100,
-                  retweets: 50,
-                  conversation: {
-                    edges: [
-                      {
-                        node: {
-                          id: 1234,
-                          body: 'You tell them YADDA YADDA',
-                          likes: 1,
-                          retweets: 1
-                        }
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
-        }
-      },
-      null,
-      2
-    )}
-  />
-);

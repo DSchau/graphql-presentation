@@ -1,7 +1,3 @@
-export default JSON.stringify(
-  {
-    name: 'GraphQL'
-  },
-  null,
-  2
-);
+export default {
+  id: 123456
+};

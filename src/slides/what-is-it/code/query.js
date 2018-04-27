@@ -1,7 +1,9 @@
 export default `
-query GetProjectByName($name: String!) {
-  project(name: $name) {
-    tagline
+query GetUserById($id: Int!) {
+  user(id: $id) {
+    age
+    name
+    title
   }
 }
 `;
