@@ -1,13 +1,21 @@
 import React from 'react';
 import styled from 'react-emotion';
 
-const Container = styled('span')`
-  font-size: 128px;
-`;
+const Container = styled('span')(
+  {
+    fontSize: 128
+  },
+  props => props
+);
 
-export function Emoji({ ariaLabel, children, className }) {
+export function Emoji({ ariaLabel, children, className, ...rest }) {
   return (
-    <Container aria-label={ariaLabel} role="img" className={className}>
+    <Container
+      aria-label={ariaLabel}
+      role="img"
+      className={className}
+      {...rest}
+    >
       {children}
     </Container>
   );

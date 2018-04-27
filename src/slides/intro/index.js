@@ -12,59 +12,45 @@ import graphqlLogo from './assets/logo.svg';
 import { SPIN } from '../../style';
 
 const images = {
-  intro: require('./assets/network-optimized.jpeg'),
+  intro: require('./assets/cover-optimized.jpeg'),
   me: require('./assets/me-optimized.png')
 };
 
 preloader(images);
 
 const GraphqlLogo = styled(Image)`
-  max-width: 100px !important;
-  max-height: 100px !important;
+  display: block;
+  max-width: 50% !important;
+  max-height: 50% !important;
+  margin: 2rem auto;
 
   animation: ${SPIN} 20s linear infinite;
 `;
 
 export const Intro = () => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '80vh'
-    }}
-  >
-    <Layout>
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: '100%'
-        }}
-      >
-        <GraphqlLogo src={graphqlLogo} />
-      </div>
-      <Fill
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingLeft: 40,
-          paddingRight: 20
-        }}
-      >
-        <Heading size={1} caps textFont="Bitter">
-          GraphQL:
-        </Heading>
-      </Fill>
-      <Fill>
-        <Heading size={4} textColor="quartenary" textAlign="left">
-          The Good Parts
-        </Heading>
-      </Fill>
-    </Layout>
+  <div>
+    <Heading
+      size={1}
+      textFont="Bitter"
+      style={{
+        display: 'inline-block',
+        width: 'auto',
+        backgroundColor: '#E10098',
+        color: 'white',
+        padding: '1rem 2rem'
+      }}
+    >
+      GraphQL
+    </Heading>
+    <Heading
+      size={3}
+      textSize={18}
+      textColor="white"
+      style={{ fontWeight: 'normal' }}
+    >
+      by <Span type="bold">Dustin Schau</Span>
+    </Heading>
+    <GraphqlLogo src={graphqlLogo} />
     <div
       style={{
         position: 'absolute',
@@ -87,7 +73,7 @@ export const Intro = () => (
 
 Intro.Props = {
   bgImage: images.intro,
-  bgDarken: 0.7,
+  bgDarken: 0.5,
   notes: `
 My name is Dustin Schau, and I'm going to hopefully teach you all about CSS in JS today. We'll start with some drawbacks of CSS that led to the creation of these libraries, then discuss advantages of CSS in JS over CSS, shift to discussion of some common patterns, utilities, and libraries to instrument CSS in JS, and then finally end with an illustration of the drawbacks of CSS in JS. Let's get started!
   `

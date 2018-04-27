@@ -69,7 +69,7 @@ export class GraphqlPlayground extends Component {
   };
 
   render() {
-    const { data, query, variables } = this.props;
+    const { data, query, textSize = 20, variables } = this.props;
     if (!data || !query) {
       return null;
     }
@@ -77,13 +77,13 @@ export class GraphqlPlayground extends Component {
     return (
       <Container>
         <Fill>
-          <Code lang="graphql" source={query} />
+          <Code lang="graphql" source={query} textSize={textSize} />
           {variables && (
             <React.Fragment>
               <TitleContainer>
                 <Title>Query variables</Title>
               </TitleContainer>
-              <Code lang="json" source={variables} />
+              <Code lang="json" source={variables} textSize={textSize} />
             </React.Fragment>
           )}
         </Fill>
@@ -93,7 +93,11 @@ export class GraphqlPlayground extends Component {
           </Button>
         </Fit>
         <Fill style={{ alignSelf: 'stretch', minHeight: '100%' }}>
-          <Code lang="json" source={this.state.showData ? data : ``} />
+          <Code
+            lang="json"
+            source={this.state.showData ? data : ``}
+            textSize={textSize}
+          />
         </Fill>
       </Container>
     );
