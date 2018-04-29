@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodePane, Heading } from 'spectacle';
+import { CodePane, Heading, Image, S as Span } from 'spectacle';
 
 import { GraphqlLogo } from '../../components';
 
@@ -52,6 +52,26 @@ export const BusinessLogic = () => (
     Keep your business logic intact
   </Heading>
 );
+
+export const GradualAdoption = () => (
+  <Heading size={2} caps fit>
+    Adopt GraphQL <Span type="italic">Gradually</Span>
+  </Heading>
+);
+
+export const GraphCool = () => (
+  <Image src={require('./images/graphcool.svg')} />
+);
+
+GraphCool.Props = {
+  bgColor: '#27AE60'
+};
+
+export const Apollo = () => <Image src={require('./images/apollo.svg')} />;
+
+Apollo.Props = {
+  bgColor: '#220a82'
+};
 
 export const RESTExamplesSnippets = () => (
   <div>
