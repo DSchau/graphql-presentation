@@ -26,7 +26,8 @@ export const Intro = () => (
         width: 'auto',
         backgroundColor: '#E10098',
         color: 'white',
-        padding: '1rem 2rem'
+        padding: '1rem 2rem',
+        paddingBottom: '2.25rem'
       }}
     >
       GraphQL
