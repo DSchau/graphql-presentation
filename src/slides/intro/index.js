@@ -33,7 +33,15 @@ export const Intro = () => (
         right: 0
       }}
     >
-      <Image src={require('./assets/nebraskajs.svg')} style={{ height: 30 }} />
+      <Link
+        href="https://www.meetup.com/nebraskajs/events/dxndfdyxhbcb/"
+        target="_blank"
+      >
+        <Image
+          src={require('./assets/nebraskajs.svg')}
+          style={{ height: 30 }}
+        />
+      </Link>
     </div>
     <Heading
       size={1}
