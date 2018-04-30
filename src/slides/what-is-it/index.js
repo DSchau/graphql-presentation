@@ -127,22 +127,6 @@ Hmm.Props = {
   bgImage: 'https://media.giphy.com/media/a5viI92PAF89q/giphy.gif'
 };
 
-export const Types = () => (
-  <CodePane
-    lang="graphql"
-    source={`
-type User {
-  id: Int
-  name: String
-  age: Int
-  title: String
-  manager: User
-}
-  `.trim()}
-    textSize={32}
-  />
-);
-
 export const TheCUD = () => (
   <Heading
     size={1}
@@ -202,6 +186,119 @@ mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
       }
     }}
   />
+);
+
+export const ATypeSystem = () => (
+  <Heading size={2} caps>
+    A type system
+  </Heading>
+);
+
+export const Types = () => (
+  <CodePane
+    lang="graphql"
+    source={`
+type User {
+  id: Int!
+  name: String!
+  age: Int!
+  title: String!
+  manager: User
+}
+  `.trim()}
+    textSize={32}
+  />
+);
+
+export const ASchemaTitle = () => (
+  <Heading size={2} caps>
+    A schema
+  </Heading>
+);
+
+export const ASchema = () => (
+  <CodePane
+    lang="graphql"
+    source={`
+type User {
+  id: Int!
+  name: String!
+  age: Int!
+  title: String!
+  manager: User
+}
+
+type Query {
+  users(limit: Int!): [User]!
+}
+
+schema {
+  query: Query
+}
+    `.trim()}
+    textSize={24}
+  />
+);
+
+export const ResolversTitle = () => (
+  <Heading size={2} caps>
+    A set of resolvers
+  </Heading>
+);
+
+export const ResolversExample = () => (
+  <CodePane
+    lang="js"
+    source={`
+const resolvers = {
+  Query: {
+    users(root, args) {
+      const params = qs.stringify(args);
+      return fetch(\`\${API_URL}/users\?\${params}\`)
+        .then(response => response.json().users);
+    }
+  },
+  User: {
+    manager(user) {
+      return fetch(\`\${API_URL}/\${user.id}/manager\`)
+        .then(response => response.json());
+    }
+  }
+};
+    `.trim()}
+    textSize={24}
+  />
+);
+
+export const WiringItAllUp = () => (
+  <Heading size={2} caps>
+    Wiring it all up
+  </Heading>
+);
+
+export const SchemaWorking = () => (
+  <CodePane
+    lang="js"
+    source={`
+import { makeExecutableSchema } from 'graphql-tools';
+
+const typeDefs = \`\`; previous types/queries/schema
+
+const resolvers = {}; // previous resolvers
+
+export const SCHEMA = makeExecutableSchema({
+  typeDefs,
+  resolvers
+});
+    `.trim()}
+    textSize={24}
+  />
+);
+
+export const RaisedHands = () => (
+  <Emoji ariaLabel="Raising hands" fontSize={256}>
+    🙌
+  </Emoji>
 );
 
 export const BackendAgnostic = () => (

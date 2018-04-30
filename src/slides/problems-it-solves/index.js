@@ -2,7 +2,7 @@ import React from 'react';
 import { CodePane, Heading, Image } from 'spectacle';
 import Player from 'react-player';
 
-import { Emoji, GraphqlPlayground } from '../../components';
+import { Emoji, GraphqlPlayground, QuoteSlide } from '../../components';
 
 export const ProblemsItSolvesIntro = () => (
   <Heading size={2} caps fit textColor="primary">
@@ -13,6 +13,35 @@ export const ProblemsItSolvesIntro = () => (
 ProblemsItSolvesIntro.Props = {
   bgColor: 'secondary'
 };
+
+export const NoSqlDatabase = () => (
+  <QuoteSlide
+    quote={`Hahaha, GraphQL is totally "So, you decided to use a NoSQL DB and now you want reasonable queries back -- here's GraphQL!"`}
+    image={require('./images/john-resig-optimized.jpeg')}
+    author="John Resig"
+    href="https://twitter.com/jeresig/status/854442725139206148"
+  />
+);
+
+NoSqlDatabase.Props = {
+  bgImage: require('./images/life-preserver-optimized.jpeg'),
+  bgDarken: 0.5
+};
+
+export const DocumentationIsBetter = () => (
+  <Heading size={2} textColor="white" caps>
+    Documentation
+  </Heading>
+);
+
+DocumentationIsBetter.Props = {
+  bgImage: require('./images/documentation-optimized.jpeg'),
+  bgDarken: 0.5
+};
+
+export const GraphiQL = () => (
+  <Image src={require('./images/graphiql-optimized.png')} />
+);
 
 export const TwitterTimeline = () => (
   <Player
@@ -28,12 +57,6 @@ export const TweetExample = () => <Image src={require('./images/tweet.png')} />;
 
 export const RepliesExample = () => (
   <Image src={require('./images/timeline.png')} />
-);
-
-export const MyReaction = () => (
-  <Emoji ariaLabel="What the..." fontSize={256}>
-    😶
-  </Emoji>
 );
 
 export const RESTCalls = () => (
@@ -70,24 +93,16 @@ export const GraphqlExample = () => (
     query={`
 query TimelineForUser($user: String!) {
   timeline(user: $user) {
-    edges {
-      node {
-        id
-        body
-        likes
-        retweets
-        conversation(first: 20) {
-          endIndex
-          edges {
-            node {
-              id
-              body
-              likes
-              retweets
-            }
-          }
-        }
-      }
+    id
+    body
+    likes
+    retweets
+    conversation(first: 20) {
+      endIndex
+      id
+      body
+      likes
+      retweets
     }
   }
 }
@@ -95,30 +110,22 @@ query TimelineForUser($user: String!) {
     variables={{ user: 'dschau' }}
     data={{
       data: {
-        timeline: {
-          edges: [
-            {
-              node: {
-                id: 1,
-                body: 'something something',
-                likes: 100,
-                retweets: 50,
-                conversation: {
-                  edges: [
-                    {
-                      node: {
-                        id: 1234,
-                        body: 'You tell them YADDA YADDA',
-                        likes: 1,
-                        retweets: 1
-                      }
-                    }
-                  ]
-                }
+        timeline: [
+          {
+            id: 1,
+            body: 'something something',
+            likes: 100,
+            retweets: 50,
+            conversation: [
+              {
+                id: 1234,
+                body: 'You tell them YADDA YADDA',
+                likes: 1,
+                retweets: 1
               }
-            }
-          ]
-        }
+            ]
+          }
+        ]
       }
     }}
   />
