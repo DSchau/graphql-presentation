@@ -26,6 +26,15 @@ preloader(images);
 
 export const Intro = () => (
   <div>
+    <div
+      style={{
+        position: 'absolute',
+        bottom: 0,
+        right: 0
+      }}
+    >
+      <Image src={require('./assets/nebraskajs.svg')} style={{ height: 30 }} />
+    </div>
     <Heading
       size={1}
       textFont="Bitter"
