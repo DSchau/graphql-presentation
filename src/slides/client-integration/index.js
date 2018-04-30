@@ -2,10 +2,14 @@ import React from 'react';
 import { CodePane, Heading, Image, Link } from 'spectacle';
 
 export const ClientSideIntro = () => (
-  <Heading size={2} fit caps>
+  <Heading size={2} fit caps textColor="primary">
     Client Side Integration
   </Heading>
 );
+
+ClientSideIntro.Props = {
+  bgColor: 'secondary'
+};
 
 export const ApolloClientIntegration = () => (
   <Image src={require('./images/apollo.svg')} />
