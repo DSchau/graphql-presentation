@@ -63,7 +63,9 @@ export const Intro = () => (
       textColor="white"
       style={{ fontWeight: 'normal' }}
     >
-      by <Span type="bold">Dustin Schau</Span>
+      <Link href="https://dustinschau.com" target="_blank" textColor="white">
+        by <Span type="bold">Dustin Schau</Span>
+      </Link>
     </Heading>
     <GraphqlLogo />
     <div
