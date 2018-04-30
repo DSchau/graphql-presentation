@@ -36,11 +36,7 @@ export default function makeSlides() {
             );
           }
           return (
-            <Slide
-              id={id}
-              key={iteratorKey}
-              {...Content.Props || Content.props}
-            >
+            <Slide key={iteratorKey} {...Content.Props || Content.props}>
               <Notes>
                 <div
                   dangerouslySetInnerHTML={{

@@ -200,7 +200,7 @@ export const Types = () => (
     lang="graphql"
     source={`
 type User {
-  id: Int!
+  id: ID!
   name: String!
   age: Int!
   title: String!

@@ -1,5 +1,13 @@
 import React from 'react';
-import { Heading, Fill, Image, Layout, Link, S as Span } from 'spectacle';
+import {
+  Appear,
+  Heading,
+  Fill,
+  Image,
+  Layout,
+  Link,
+  S as Span
+} from 'spectacle';
 import styled from 'react-emotion';
 import TwitterIcon from 'react-icons/lib/fa/twitter';
 import GithubIcon from 'react-icons/lib/fa/github';
@@ -65,7 +73,15 @@ Intro.Props = {
   bgImage: images.intro,
   bgDarken: 0.5,
   notes: `
-My name is Dustin Schau, and I'm going to hopefully teach you all about CSS in JS today. We'll start with some drawbacks of CSS that led to the creation of these libraries, then discuss advantages of CSS in JS over CSS, shift to discussion of some common patterns, utilities, and libraries to instrument CSS in JS, and then finally end with an illustration of the drawbacks of CSS in JS. Let's get started!
+Hello! My name is Dustin Schau and I'll be talking to you today about... you guessed it, GraphQL!
+
+This talk is titled in the meetup as GraphQL: The Good Parts, but that's just me being uncreative. In actuality, I'd title this talk GraphQL: Most of the Parts.
+
+It's intended to be a gentle introduction to foundational concepts of GraphQL. In illustrating these concepts, we gain a greater understanding of what makes GraphQL great, and a greater appreciation for the value it can provide for an application. I go into some detail of the problems that GraphQL is trying to solve and how it solves them.
+
+Finally, I'll end with a section on Integration into an existing backend. This is primarily focused on an existing RESTful backend, but can be substituted to any deta mechanism, e.g. MySQL, Mongo, or anywhere data is stored and can be updated/queried against.
+
+All things go well, I'll end with a few demos and some live coding :raised-hands:
   `
 };
 
@@ -123,9 +139,9 @@ export const AboutMe = () => (
 
 AboutMe.Props = {
   notes: `
-- Graduated with a CS degree from Creighton in 2013
-- Frontend developer specialist, specializing in all things JavaScript
-- Do a fair bit of backend and utility development in NodeJS, e.g. backend services, build tooling, etc.
+My name is Dustin Schau, and I can't _not_ use the hilarious picture in the meetup. When I'm not looking angry as all hell, I am a frontend developer who likes to claim that I specialize in all things JavaScript. Lately, I've had more of a NodeJS focus, so that ties in well to this GraphQL talk.
+
+I work for an awesome company called Object Partners, so come talk to me after if you'd like to chat about what I do, about JavaScript, or about whatever.
   `
 };
 
@@ -159,7 +175,9 @@ export const No = () => (
     <Heading size={1} caps fit textColor="primary">
       No
     </Heading>
-    <Heading size={6}>&hellip; and chill</Heading>
+    <Appear>
+      <Heading size={6}>&hellip; and chill</Heading>
+    </Appear>
   </React.Fragment>
 );
 

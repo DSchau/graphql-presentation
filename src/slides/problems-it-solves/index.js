@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodePane, Heading, Image } from 'spectacle';
+import { Appear, CodePane, Heading, Image } from 'spectacle';
 import Player from 'react-player';
 
 import { Emoji, GraphqlPlayground, QuoteSlide } from '../../components';
@@ -65,14 +65,19 @@ export const RESTCalls = () => (
       'https://twitter.com/api/tweets',
       'https://twitter.com/api/tweets/1234',
       'https://twitter.com/api/tweets/1234/conversation'
-    ].map(url => (
-      <CodePane
-        lang="markup"
-        source={url}
-        textSize={32}
-        style={{ margin: '2rem 0' }}
-      />
-    ))}
+    ].map((url, index) => {
+      const Wrapper = index === 0 ? React.Fragment : Appear;
+      return (
+        <Wrapper key={url}>
+          <CodePane
+            lang="markup"
+            source={url}
+            textSize={32}
+            style={{ margin: '2rem 0' }}
+          />
+        </Wrapper>
+      );
+    })}
   </div>
 );
 
