@@ -59,18 +59,20 @@ export const GradualAdoption = () => (
   </Heading>
 );
 
-export const GraphCool = () => (
+export const ApolloIntegration = () => (
+  <Image src={require('./images/apollo.svg')} />
+);
+
+ApolloIntegration.Props = {
+  bgColor: '#220a82'
+};
+
+export const GraphCoolIntegration = () => (
   <Image src={require('./images/graphcool.svg')} />
 );
 
-GraphCool.Props = {
+GraphCoolIntegration.Props = {
   bgColor: '#27AE60'
-};
-
-export const Apollo = () => <Image src={require('./images/apollo.svg')} />;
-
-Apollo.Props = {
-  bgColor: '#220a82'
 };
 
 export const RESTExamplesSnippets = () => (
