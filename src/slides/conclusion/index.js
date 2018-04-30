@@ -1,14 +1,50 @@
 import React from 'react';
-import { Link } from 'spectacle';
+import { Heading, Link, List, ListItem } from 'spectacle';
 import TwitterIcon from 'react-icons/lib/fa/twitter';
 import GithubIcon from 'react-icons/lib/fa/github';
-import WebsiteIcon from 'react-icons/lib/md/web';
+import WebsiteIcon from 'react-icons/lib/fa/globe';
 
 const images = {
-  thankYou: 'https://media.giphy.com/media/KJ1f5iTl4Oo7u/giphy.gif',
+  thankYou: 'https://media.giphy.com/media/KJ1f5iTl4Oo7u/giphy.gif'
 };
 
-export const FinTheEndThatsAllFolks = () =>
+export const Links = () => (
+  <div>
+    <Heading size={2} caps>
+      Links
+    </Heading>
+    {[
+      ['REST Backend', 'https://github.com/DSchau/graphql-rest-demo'],
+      [
+        'GraphQL Layer',
+        'https://github.com/DSchau/graphql-rest-implementation'
+      ],
+      ['Speaker Signup', 'https://github.com/DSchau/speaker-signup'],
+      ['Speaker Signup', 'https://speaker-signup.netlify.com']
+    ].map(([title, href]) => {
+      const Icon = href.includes('github.com') ? GithubIcon : WebsiteIcon;
+      return (
+        <ListItem
+          key={href}
+          textAlign="left"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            listStyleType: 'none',
+            margin: '1rem 0'
+          }}
+        >
+          <Icon color="white" style={{ marginRight: '1rem' }} />
+          <Link href={href} target="_blank" textColor="white">
+            {title}
+          </Link>
+        </ListItem>
+      );
+    })}
+  </div>
+);
+
+export const FinTheEndThatsAllFolks = () => (
   <div
     style={{
       display: 'flex',
@@ -35,7 +71,7 @@ export const FinTheEndThatsAllFolks = () =>
         Icon: WebsiteIcon,
         text: 'website'
       }
-    ].map(({ href, Icon, text }) =>
+    ].map(({ href, Icon, text }) => (
       <Link
         href={href}
         textColor="white"
@@ -47,8 +83,9 @@ export const FinTheEndThatsAllFolks = () =>
         <Icon color="white" style={{ marginRight: 6 }} />
         {text}
       </Link>
-    )}
-  </div>;
+    ))}
+  </div>
+);
 
 FinTheEndThatsAllFolks.Props = {
   bgImage: images.thankYou,

@@ -57,11 +57,12 @@ export const ExampleTwo = () => (
       query: query
         .replace(/age\s+/, '')
         .replace(/title\s+/, '')
+        .replace('name', 'username: name')
         .replace(/\s{4}\}/, '  }'),
       data: {
         data: {
           user: {
-            name: data.data.user.name
+            username: data.data.user.name
           }
         }
       },
@@ -242,7 +243,7 @@ schema {
 
 export const ResolversTitle = () => (
   <Heading size={2} caps>
-    A set of resolvers
+    A means to resolve data
   </Heading>
 );
 
@@ -259,7 +260,7 @@ const resolvers = {
     }
   },
   User: {
-    manager(user) {
+    manager(user, args, context) {
       return fetch(\`\${API_URL}/\${user.id}/manager\`)
         .then(response => response.json());
     }
@@ -269,6 +270,35 @@ const resolvers = {
     textSize={24}
   />
 );
+
+export const ResolversInDepth = () => null;
+
+ResolversInDepth.Props = {
+  bgColor: 'primary',
+  code: `
+const resolvers = {
+  Query: {
+    users(root, args, context) {
+      const params = qs.stringify(args);
+      return fetch(\`\${API_URL}/users\?\${params}\`)
+        .then(response => response.json().users);
+    }
+  },
+  User: {
+    manager(user, args, context) {
+      return fetch(\`\${API_URL}/\${user.id}/manager\`)
+        .then(response => response.json());
+    }
+  }
+};
+  `.trim(),
+  lang: 'js',
+  ranges: [
+    { loc: [0, 20], title: 'Resolvers in depth' },
+    { loc: [1, 3] },
+    { loc: [8, 10] }
+  ]
+};
 
 export const WiringItAllUp = () => (
   <Heading size={2} caps>
@@ -282,7 +312,7 @@ export const SchemaWorking = () => (
     source={`
 import { makeExecutableSchema } from 'graphql-tools';
 
-const typeDefs = \`\`; previous types/queries/schema
+const typeDefs = \`\`; // previous types/queries/schema
 
 const resolvers = {}; // previous resolvers
 

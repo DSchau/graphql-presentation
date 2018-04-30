@@ -22,6 +22,7 @@ ApolloClientIntegration.Props = {
 export const ApolloBoostExample = () => null;
 
 ApolloBoostExample.Props = {
+  bgColor: 'primary',
   code: require('./code/apollo-boost').default,
   lang: 'jsx',
   ranges: [
