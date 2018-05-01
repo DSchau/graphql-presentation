@@ -13,34 +13,36 @@ export const Links = () => (
     <Heading size={2} caps>
       Links
     </Heading>
-    {[
-      ['REST Backend', 'https://github.com/DSchau/graphql-rest-demo'],
-      [
-        'GraphQL Layer',
-        'https://github.com/DSchau/graphql-rest-implementation'
-      ],
-      ['Speaker Signup', 'https://github.com/DSchau/speaker-signup'],
-      ['Speaker Signup', 'https://speaker-signup.netlify.com']
-    ].map(([title, href]) => {
-      const Icon = href.includes('github.com') ? GithubIcon : WebsiteIcon;
-      return (
-        <ListItem
-          key={href}
-          textAlign="left"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            listStyleType: 'none',
-            margin: '1rem 0'
-          }}
-        >
-          <Icon color="white" style={{ marginRight: '1rem' }} />
-          <Link href={href} target="_blank" textColor="white">
-            {title}
-          </Link>
-        </ListItem>
-      );
-    })}
+    <List>
+      {[
+        ['REST Backend', 'https://github.com/DSchau/graphql-rest-demo'],
+        [
+          'GraphQL Layer',
+          'https://github.com/DSchau/graphql-rest-implementation'
+        ],
+        ['Speaker Signup', 'https://github.com/DSchau/speaker-signup'],
+        ['Speaker Signup', 'https://speaker-signup.netlify.com']
+      ].map(([title, href]) => {
+        const Icon = href.includes('github.com') ? GithubIcon : WebsiteIcon;
+        return (
+          <ListItem
+            key={href}
+            textAlign="left"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              listStyleType: 'none',
+              margin: '1rem 0'
+            }}
+          >
+            <Icon color="white" style={{ marginRight: '1rem' }} />
+            <Link href={href} target="_blank" textColor="white">
+              {title}
+            </Link>
+          </ListItem>
+        );
+      })}
+    </List>
   </div>
 );
 

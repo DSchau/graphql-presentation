@@ -8,7 +8,6 @@ import {
   Link,
   S as Span
 } from 'spectacle';
-import styled from 'react-emotion';
 import TwitterIcon from 'react-icons/lib/fa/twitter';
 import GithubIcon from 'react-icons/lib/fa/github';
 import WebsiteIcon from 'react-icons/lib/md/web';

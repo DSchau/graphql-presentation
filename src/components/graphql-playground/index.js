@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import { CodePane, Fill, Fit, Layout } from 'spectacle';
+import { CodePane, Fill, Fit } from 'spectacle';
 import 'prismjs/components/prism-graphql';
 import 'prismjs/components/prism-json';
 import PlayArrow from 'react-icons/lib/md/play-arrow';

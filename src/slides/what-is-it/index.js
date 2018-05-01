@@ -1,12 +1,10 @@
 import React from 'react';
-import { CodePane, Heading, Image, Fill, Layout, S as Span } from 'spectacle';
+import { CodePane, Heading, S as Span } from 'spectacle';
 import styled from 'react-emotion';
 import { css } from 'emotion';
 
 import { Emoji, GraphqlPlayground } from '../../components';
 import { APPEAR } from '../../style';
-
-import databaseImage from './images/database.svg';
 
 const LibrariesContainer = styled('div')`
   display: grid;
@@ -255,7 +253,7 @@ const resolvers = {
   Query: {
     users(root, args) {
       const params = qs.stringify(args);
-      return fetch(\`\${API_URL}/users\?\${params}\`)
+      return fetch(\`\${API_URL}/users?\${params}\`)
         .then(response => response.json().users);
     }
   },
@@ -280,7 +278,7 @@ const resolvers = {
   Query: {
     users(root, args, context) {
       const params = qs.stringify(args);
-      return fetch(\`\${API_URL}/users\?\${params}\`)
+      return fetch(\`\${API_URL}/users?\${params}\`)
         .then(response => response.json().users);
     }
   },
@@ -325,11 +323,13 @@ export const SCHEMA = makeExecutableSchema({
   />
 );
 
+/* eslint-disable */
 export const RaisedHands = () => (
   <Emoji ariaLabel="Raising hands" fontSize={256}>
     🙌
   </Emoji>
 );
+/* eslint-enable */
 
 export const BackendAgnostic = () => (
   <Heading size={2} caps fit textColor="primary">

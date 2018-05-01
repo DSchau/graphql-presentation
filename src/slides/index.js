@@ -1,5 +1,5 @@
 import React from 'react';
-import { Notes, Magic, SlideSet, Slide } from 'spectacle';
+import { Notes, SlideSet, Slide } from 'spectacle';
 import CodeSlide from '@dschau/spectacle-code-slide';
 import marked from 'marked';
 import dasherize from 'lodash.kebabcase';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Appear, CodePane, Heading, Image } from 'spectacle';
 import Player from 'react-player';
 
-import { Emoji, GraphqlPlayground, QuoteSlide } from '../../components';
+import { GraphqlPlayground, QuoteSlide } from '../../components';
 
 export const ProblemsItSolvesIntro = () => (
   <Heading size={2} caps fit textColor="primary">
