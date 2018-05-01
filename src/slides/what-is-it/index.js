@@ -38,6 +38,21 @@ export const AQueryLanguage = () => (
   </Heading>
 );
 
+export const ExampleDataSet = () => (
+  <CodePane
+    lang="typescript"
+    source={`
+interface User {
+  name: string;
+  age: number;
+  title: string;
+  department: string;
+}
+  `.trim()}
+    textSize={24}
+  />
+);
+
 export const Example = () => (
   <GraphqlPlayground
     query={require('./code/query').default}
